@@ -1,0 +1,35 @@
+{
+  "version": "0.1.0",
+  "name": "api",
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "node": ">=12"
+  },
+  "scripts": {
+    "test": "jest --coverage",
+    "start": "npx serverless offline start"
+  },
+  "author": "Groundbreaker Engineering",
+  "devDependencies": {
+    "eslint": "^7.25.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jest": "^23.20.0",
+    "jest": "^26.6.3",
+    "jest-cli": "^26.6.3",
+    "jest-dynalite": "^3.3.1",
+    "mockdate": "^3.0.5",
+    "serverless-offline": "^6.9.0"
+  },
+  "dependencies": {
+    "dwolla-v2": "^3.2.0",
+    "serverless": "^2.40.0",
+    "uuid": "^8.3.2",
+    "yup": "^0.29.3"
+  },
+  "jest": {
+    "preset": "jest-dynalite"
+  }
+}

@@ -1,0 +1,60 @@
+service: api
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-1
+  environment:
+    DWOLLA_ID: NaNLQThV0l1UgixNX0BgrixvvQjn4Wpt73spB9jOHeZUFZxD3J
+    DWOLLA_SECRET: wvpTGQz2QHtj3chTUfYDIWWYCpldfigS63ejGSifnjrRnuKkdn
+    DWOLLA_ENV: sandbox
+
+functions:
+  getCustomer:
+    handler: src/services/customers.get
+    description: Get an Customer by ID
+    events:
+      - http:
+          method: get
+          path: customers/{id}
+          cors: true
+  listCustomer:
+    handler: src/services/customers.list
+    description: List Customers ID
+    events:
+      - http:
+          method: get
+          path: customers
+          cors: true
+  listCustomerFundingSources:
+    handler: src/services/customers.listCustomerFundingSources
+    description: List Accounts by a Customer ID
+    events:
+      - http:
+          method: get
+          path: customers/{id}/accounts
+          cors: true
+  getFundingSource:
+    handler: src/services/accounts.get
+    description: Get an Customer by ID
+    events:
+      - http:
+          method: get
+          path: accounts/{id}
+          cors: true
+  postTransfer:
+    handler: src/services/transfers.post
+    description: Make a transfer between customers
+    events:
+      - http:
+          method: post
+          path: transfers
+          cors: true
+
+plugins:
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    lambdaPort: null
+    httpPort: 3001
